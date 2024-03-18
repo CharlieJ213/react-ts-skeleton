@@ -22,13 +22,10 @@ const Layout = ({ pageTitle }: LayoutProps): JSX.Element => {
   return (
     <div className={s.wrapper}>
       <Helmet>{pageTitle && <title>{pageTitle}</title>}</Helmet>
-
       <Header />
-
-      <main>
+      <main id="main">
         <Outlet />
       </main>
-
       <Footer />
     </div>
   );
