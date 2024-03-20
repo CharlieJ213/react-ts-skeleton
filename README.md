@@ -6,6 +6,8 @@ This is a skeleton project for quickly setting up a React application with TypeS
 >
 > So personally, I enjoy using HTML elements and actual CSS (SCSS) whilst building applications. It feels like better separation between the styles and JS. When UI libraries force styling to be done through the JSX I find the components start to blow up in size.
 >
+> I've also added in some recommended VS Code extensions [here](/.vscode/extensions.json) which you can see by going to the Extensions tab and typing `@recommended`. I've found these help improve productivity and help the IDE to work more for you.
+>
 > If you have any ideas of how to improve this, or you find this repo in useful in any way whatsoever please don't hesitate to get in contact!
 
 ## Table of Contents
