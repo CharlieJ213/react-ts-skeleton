@@ -36,6 +36,21 @@ This is a skeleton project for quickly setting up a React application with TypeS
   - [Fonts](#fonts)
   - [Mixins](#mixins)
   - [Z Index](#z-index)
+- [Extras you can add](#extras-you-can-add)
+  - [State Management](#state-management)
+    - [Redux](#redux)
+    - [Zustand](#zustand)
+  - [Documentation](#documentation)
+    - [Storybook](#storybook)
+    - [React Styleguidist](#react-styleguidist)
+  - [Testing](#testing)
+    - [Cypress](#cypress)
+    - [Jest](#jest)
+    - [ViTest](#vitest)
+    - [Testing Library - React](#testing-library---react)
+  - [Mobile Application Development](#mobile-application-development)
+    - [CapacitorJS](#capacitorjs)
+    - [Ionic](#ionic)
 
 ## Features
 
@@ -280,3 +295,56 @@ Here there are some generic functions which could be of use when writing any SCS
 ### Z Index
 
 The file `src/theme/_z-index.scss` exports some initial `z-index` values. These can be helpful when trying to build up layers in the UI. Currently, there are exported variables for the already set up `Modal` component.
+
+## Extras you can add
+
+### State Management
+
+Controlling global state can come down to personal preference. React provides its [Context API](https://react.dev/reference/react/createContext) which you can use for global state management, but there are other options. Just keep in mind, if you pick one solution, it's best to stick with that throughout the entire application for consistency.
+
+#### Redux
+
+Redux is a powerful state management tool for React applications, offering a centralized store to manage application state in a predictable and scalable way. With Redux, developers can easily track changes to the state, debug applications using time-travel debugging, and handle complex state logic efficiently. To get started with Redux, check out the official documentation [here](https://react-redux.js.org/introduction/getting-started) for comprehensive guides, examples, and API references.
+
+#### Zustand
+
+Zustand is a lightweight state management library for React that provides a simple and flexible API to manage state in functional components. It allows you to create stores with minimal boilerplate and easily access state and actions using React hooks. Zustand promotes a more functional and concise approach to state management, making it ideal for small to medium-sized applications or as an alternative to more complex solutions like Redux. To learn more about Zustand and how to integrate it into your React projects, refer to the official documentation [here](https://github.com/pmndrs/zustand).
+
+### Documentation
+
+#### Storybook
+
+Storybook is an open-source tool for developing UI components in isolation for React, Vue, Angular, and other modern web frameworks. It allows developers to build and showcase UI components in an interactive development environment, enabling rapid iteration and testing. With Storybook, you can create stories to showcase individual components with different states and props, making it easier to develop, test, and document UI components in isolation. To learn more about Storybook and how to use it in your React projects, check out the official documentation [here](https://storybook.js.org/).
+
+#### React Styleguidist
+
+React Styleguidist is a component development environment for React and React Native applications. It helps developers build living style guides and documentation directly from their React components. With React Styleguidist, you can showcase components with different props, states, and variations, making it easy to understand how they behave in different scenarios. It also provides features like hot reloading, automatic component documentation generation, and integration with popular tools like Jest and TypeScript. To learn more about React Styleguidist and how to integrate it into your React projects, check out the official documentation [here](https://react-styleguidist.js.org/).
+
+### Testing
+
+#### Cypress
+
+Cypress is a next-generation front-end testing tool built for the modern web. It provides a powerful yet simple API to write end-to-end tests for web applications. With Cypress, you can write tests that run directly in the browser, allowing you to see exactly what's happening at each step of your test suite. It offers features like automatic waiting, real-time reloading, and robust debugging tools, making it easy to write and maintain reliable tests. Cypress is designed to work seamlessly with modern JavaScript frameworks like React, Angular, and Vue. To learn more about Cypress and how to get started with testing your React applications, check out the official documentation [here](https://docs.cypress.io/).
+
+#### Jest
+
+Jest is a delightful JavaScript testing framework for React applications. It provides a zero-configuration experience out of the box and focuses on simplicity and speed. With Jest, you can write tests using familiar syntax, such as `describe` and `it`, and assertions with `expect`. It offers features like snapshot testing, mocking, and parallel test execution, making it easy to write and maintain robust test suites. Jest integrates seamlessly with popular tools like React Testing Library and Enzyme, and it's widely adopted in the React community. To learn more about Jest and how to write tests for your React applications, check out the official documentation [here](https://jestjs.io/).
+
+#### ViTest
+
+Vitest is a lightweight and fast test runner primarily designed for testing Vue.js applications. It provides a simple and intuitive API for writing and running tests for Vue components, Vuex stores, and other Vue-related entities. Vitest aims to offer a seamless testing experience with minimal configuration and setup, allowing developers to focus on writing meaningful tests for their Vue applications. While it's primarily tailored for Vue.js, it can also be used for testing React applications or other JavaScript projects. To learn more about Vitest and how to use it for testing Vue.js applications, check out the official documentation [here](https://vitest.dev/).
+
+#### Testing Library - React
+
+`@testing-library/react` is a popular testing utility for React applications. It provides a set of utilities to write tests that focus on the behavior of your components from the user's perspective. This library encourages writing tests that closely resemble how your components are used by real users, promoting better testing practices and more robust code. `@testing-library/react` works well with other testing frameworks like Jest and allows you to query elements using semantic queries similar to how users interact with your application. To learn more about `@testing-library/react` and how to use it for testing your React components, check out the official documentation [here](https://testing-library.com/docs/react-testing-library/intro/).
+
+### Mobile Application Development
+
+#### CapacitorJS
+
+Capacitor is a cross-platform app runtime that makes it easy to build web apps that run natively on iOS, Android, and the web. It enables developers to build high-quality mobile apps using web technologies like HTML, CSS, and JavaScript, while still having access to native functionality and APIs. Capacitor provides a consistent API for accessing device features, such as the camera, file system, and geolocation, across different platforms. It's particularly well-suited for developers who are familiar with web development and want to leverage their existing skills to build mobile apps. To learn more about Capacitor and how to get started building mobile apps with it, check out the official documentation [here](https://capacitorjs.com/docs).
+
+#### Ionic
+
+Ionic is a popular open-source framework for building cross-platform mobile and web applications using web technologies like HTML, CSS, and JavaScript/TypeScript. It provides a comprehensive set of UI components, gestures, and tools that enable developers to create high-quality and interactive mobile apps. Ionic offers a rich ecosystem of plugins and integrations with other frameworks like Angular, React, and Vue.js, allowing developers to leverage their existing skills and libraries. With Ionic, developers can build apps that run natively on iOS, Android, and the web with a single codebase, streamlining the development process and reducing time to market. To learn more about Ionic and how to get started building mobile apps with it, check out the official documentation [here](https://ionicframework.com/docs).
+
