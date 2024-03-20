@@ -119,7 +119,7 @@ Certain styling variables and helpers have been set up. The general approach to 
 
 The difference between SCSS and CSS variables is that CSS ones can change at runtime. This means that we can dynamically import a CSS file in our `./src/main.tsx` and change the theme of the entire UI (if we have our variables set up correctly).
 
-For example. In the pre-written [Button component's CSS file](./src/components/Button/Button.module.scss) you should see an example of this. Some variables have been declared, such as `--button-color`, `--button-background-color--disabled` and `--button-border-width`. These can all be overridden anywhere within the app or from an imported CSS file. 
+For example. In the pre-written [Button component's CSS file](./src/components/Button/Button.module.scss) you should see an example of this. Some variables have been declared, such as `--button-color`, `--button-background-color--disabled` and `--button-border-width`. These can all be overridden anywhere within the app or from an imported CSS file.
 
 ```css
 /* ./src/assets/my-custom-theme.css */
@@ -130,8 +130,9 @@ For example. In the pre-written [Button component's CSS file](./src/components/B
 
 ```ts
 // ./src/main.tsx
-import('@app/assets/my-custom-theme.css')
-  .then(() => console.log('Custom CSS theme loaded!'));
+import('@app/assets/my-custom-theme.css').then(() =>
+  console.log('Custom CSS theme loaded!'),
+);
 ```
 
 All variables exported from the `./src/theme` folder have been exported at the `:root` level which means all of them should be accessible from anywhere within the application (they should also apply to your custom theme files as well, so for example you can use the color variables in your custom CSS themes).
