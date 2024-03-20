@@ -2,7 +2,7 @@
 
 This is a skeleton project for quickly setting up a React application with TypeScript, using Vite for build and development, ESLint and Prettier for linting and formatting, SCSS for styling, and Husky for pre-commit hooks.
 
-> There is definitely a lot of personal preference in the way this has been set up. I've come to building web applications this way after a few years of experience working on many projects (personal and professional).
+> There is definitely a lot of personal preference in the way this has been set up. I've come to building web applications this way after a few years of experience working on a variety of different projects (personal and professional).
 >
 > So personally, I enjoy using HTML elements and actual CSS (SCSS) whilst building applications. It feels like better separation between the styles and JS. When UI libraries force styling to be done through the JSX I find the components start to blow up in size.
 >
