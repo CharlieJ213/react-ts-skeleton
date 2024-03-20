@@ -113,6 +113,90 @@ Make sure you have Node.js and npm (or yarn) installed on your machine.
 
 This project uses Husky to run linting and formatting checks before every commit. This ensures that your codebase stays consistent and free from linting errors.
 
+## Project Structure
+
+A basic structure has been set up. The idea generally follows that each folder in `src/` should have a `index` file to export all the contents of the folder from. This makes importing multiple things in one file a lot cleaner.
+
+Typescript path aliasing has also been set up in the [tsconfig file](./tsconfig.json). At the moment it's just set to `@app/*` which means all files within `src` can be imported using `@app/${PATH}`. This reduces the amount of relative (`'../../'`) imports and looks cleaner.
+
+### Tree
+
+```text
+.
+├── public
+│   └── vite.svg
+├─── src
+│   ├── assets
+│   │   └── react.svg
+│   ├── components
+│   │   └── index.ts
+│   ├── context
+│   │   └── index.ts
+│   ├── hooks
+│   │   ├── index.ts
+│   ├── pages
+│   │   └── index.ts
+│   ├── theme
+│   │   └── index.scss
+│   ├── types
+│   │   └── index.ts
+│   ├── util
+│   │   └── config.ts
+│   ├── index.scss
+│   ├── main.tsx
+│   └── vite-env.d.ts
+├── README.md
+├── index.html
+├── package.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+```
+
+### The `public` Folder
+
+This is the `public` folder supplied by Vite. See the docs [here](https://vitejs.dev/guide/assets) for its benefits.
+
+Generally it's used for storing static assets which you want accessible via URL. For example, you can access the file `public/vite.svg` at `http://localhost:5173/vite.svg`
+
+### The `assets` folder
+
+This is another place to store static assets, usually only assets you import in the code itself. This can be translation files, fonts, anything. It's just not accessible via URL if you store it in this folder
+
+### The `components` folder
+
+This is a folder to store all of your components in. Components are building blocks for pages. They should be separated out and set up for reusability.
+
+### The `context` folder
+
+This is a folder to store React Context definitions. In the `index.ts` here we also export something extra:
+
+```ts
+export const useSiteSettingsContext = () => useContext(SiteSettingsContext);
+```
+
+When using a context in React code you will need to import the function `useContext`. That means you'll need to import 2 things in your component file for just 1 context. So here we are aliasing the function and exporting `useSiteSettingsContext` as a custom hook so you only ever need 1 import (in your component code) when using a React Context.
+
+### The `hooks` folder
+
+This is the folder that contains custom hooks for the application.
+
+### The `pages` folder
+
+This is where we store the files for pages. Each new page should have its own directory in this folder.
+
+### The `theme` folder
+
+This is where the SCSS files are stored for the global theming config. Read more in [Styling](#styling)
+
+### The `types` folder
+
+This is where custom TypeScript types are stored. You can structure this folder however you like. For example, if you have a load of types relating to a database it could be good to create a `types/DB` folder to export all your types from.
+
+### The `util` folder
+
+This is a folder where you can store random helper functions that are used in multiple places throughout the app / config for the application. Anything you want really that's not particularly related to React and is more around config or just base TypeScript code.
+
 ## Styling
 
 Certain styling variables and helpers have been set up. The general approach to styling in this repo is making everything as customizable as possible. We want to use CSS variables to dictate the styles of our UI components to make it a lot simpler to write custom themes for.
