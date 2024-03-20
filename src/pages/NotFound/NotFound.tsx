@@ -1,3 +1,4 @@
+import { useSiteTitle } from '@app/hooks';
 import s from './NotFound.module.scss';
 
 /**
@@ -5,6 +6,7 @@ import s from './NotFound.module.scss';
  * @returns {JSX.Element}
  */
 const NotFound = (): JSX.Element => {
+  useSiteTitle('Page Not Found', true);
   return (
     <div className={s.wrapper}>
       <p>Page not found!</p>

@@ -1,3 +1,4 @@
+import { useSiteTitle } from '@app/hooks';
 import s from './Home.module.scss';
 
 /**
@@ -5,6 +6,8 @@ import s from './Home.module.scss';
  * @returns {JSX.Element}
  */
 const Home = (): JSX.Element => {
+  useSiteTitle('Home');
+
   return (
     <div className={s.wrapper}>
       <p>This is the home page!</p>
