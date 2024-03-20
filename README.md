@@ -89,7 +89,3 @@ Make sure you have Node.js and npm (or yarn) installed on your machine.
 
 This project uses Husky to run linting and formatting checks before every commit. This ensures that your codebase stays consistent and free from linting errors.
 
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
