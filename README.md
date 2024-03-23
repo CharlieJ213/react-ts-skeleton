@@ -16,12 +16,20 @@ This is a skeleton project for quickly setting up a React application with TypeS
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Usage](#usage)
   - [Linting and Formatting](#linting-and-formatting)
   - [Pre-commit Hooks](#pre-commit-hooks)
+- [Environment Variables File (.env)](#environment-variables-file-env)
+  - [Usage](#usage)
+  - [Important Notes](#important-notes)
+- [Run The Application](#run-the-application)
+  - [Running with `npm / yarn`](#running-with-npm--yarn)
+  - [Running with `docker`](#running-with-docker)
+  - [Running with `docker-compose`](#running-with-docker-compose)
+  - [Stopping and removing containers](#stopping-and-removing-containers)
 - [Project Structure](#project-structure)
   - [Tree](#tree)
   - [The `public` Folder](#the-public-folder)
+  - [The `docs` Folder](#the-docs-folder)
   - [The `assets` folder](#the-assets-folder)
   - [The `components` folder](#the-components-folder)
   - [The `context` folder](#the-context-folder)
@@ -93,28 +101,6 @@ Make sure you have Node.js and npm (or yarn) installed on your machine.
    yarn
    ```
 
-### Usage
-
-- To start the development server:
-
-  ```bash
-  npm run dev
-  # or
-  yarn dev
-  ```
-
-  This will start the development server and open your default web browser with the application running. The development server automatically reloads the browser when you make changes to the source code.
-
-- To build for production:
-
-  ```bash
-  npm run build
-  # or
-  yarn build
-  ```
-
-  This will generate a production-ready build of your application in the `dist` directory.
-
 ### Linting and Formatting
 
 - To run ESLint:
@@ -141,6 +127,114 @@ Make sure you have Node.js and npm (or yarn) installed on your machine.
 
 This project uses Husky to run linting and formatting checks before every commit. This ensures that your codebase stays consistent and free from linting errors.
 
+## Environment Variables File (.env)
+
+The `.env` file is used to define environment variables for your Vite-powered React application. These variables can be accessed within your application code and are often used to configure different aspects of your application based on the environment it's running in.
+
+### Usage
+
+1. **Creating the file**: Create a file named `.env` in the root directory of your Vite-powered React project.
+
+2. **Defining environment variables**: Each line in the `.env` file should contain a single environment variable in the `KEY=VALUE` format. For example:
+
+    ```dotenv
+    # Environment variables for the Vite-powered React application
+
+    # API URL
+    VITE_API_URL=https://api.example.com
+
+    # Environment-specific configuration
+    MODE=production
+    ```
+
+    - `VITE_API_URL`: This variable specifies the URL of the API that your Vite-powered React application will communicate with. Replace `https://api.example.com` with the actual API URL.
+
+    - `MODE`: This variable specifies the environment in which the React application is running. Setting it to `production` indicates that the application is running in a production environment.
+
+3. **Accessing environment variables**: In your Vite-powered React application code, you can access these environment variables using `import.meta.env`. For example:
+
+    ```javascript
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const nodeEnv = import.meta.env.NODE_ENV;
+    ```
+
+    These variables can then be used to configure your application behavior, such as making API requests or enabling/disabling certain features based on the environment.
+
+### Important Notes
+
+- **Variable naming conventions**: It's common practice to prefix environment variables used in a Vite-powered React application with `VITE_`. This helps differentiate them from other environment variables and ensures they are accessible through `import.meta.env`.
+
+- **Sensitive information**: Avoid storing sensitive information, such as API keys or passwords, directly in the `.env` file. Instead, consider using a secure method for managing sensitive data, such as environment-specific secrets management solutions or environment variables provided at runtime.
+
+- **Gitignore**: Ensure that the `.env` file is added to your `.gitignore` file to prevent it from being committed to version control. This helps avoid exposing sensitive information and ensures that environment variables remain local to each developer's environment.
+
+## Run The Application
+
+### Running with `npm / yarn`
+
+- To start the development server:
+
+  ```bash
+  npm run dev
+  # or
+  yarn dev
+  ```
+
+  This will start the development server and open your default web browser with the application running. The development server automatically reloads the browser when you make changes to the source code.
+
+- To build for production:
+
+  ```bash
+  npm run build
+  # or
+  yarn build
+  ```
+
+  This will generate a production-ready build of your application in the `dist` directory.
+
+### Running with `docker`
+
+1. **Build the Docker image**: Navigate to the directory containing your Dockerfile in your terminal, then run the following command to build the Docker image:
+
+   ```bash
+   docker build -t my-react-app .
+   ```
+
+   Replace `my-react-app` with the desired name for your Docker image.
+
+2. **Run the Docker container**: After successfully building the Docker image, you can run a container based on this image using the following command:
+
+   ```bash
+   docker run -d -p 8080:80 my-react-app
+   ```
+
+   This command starts a container in detached mode (`-d`) and forwards port 8080 on your local machine to port 80 inside the container.
+
+### Running with `docker-compose`
+
+1. **Prepare the Docker Compose file**: Create a file named `docker-compose.yml` in your project directory and copy the provided Docker Compose configuration into this file.
+
+2. **Set environment variables (optional)**: If you have any environment variables defined in your Docker Compose file, make sure to replace them with the appropriate values.
+
+3. **Run Docker Compose**: In your terminal, navigate to the directory containing your `docker-compose.yml` file and run the following command:
+
+   ```bash
+   docker-compose up -d
+   ```
+
+   This command starts the services defined in your Docker Compose file in detached mode (`-d`), meaning they run in the background.
+
+4. **Access your React application**: Once the Docker containers are running, you can access your React application in a web browser by navigating to the specified hostname or IP address. If you defined a custom hostname in the Traefik labels (e.g., `example.com`), make sure to set up DNS or hosts file entries accordingly.
+
+### Stopping and removing containers
+
+To stop and remove the containers created by Docker or Docker Compose, you can use the following commands:
+
+- **Docker**: Use the `docker stop` command followed by the container ID or name to stop a container, and `docker rm` to remove it.
+- **Docker Compose**: In the directory containing your `docker-compose.yml` file, run `docker-compose down` to stop and remove the containers created by Docker Compose.
+
+That's it! You should now be able to run your React application using either the Dockerfile or Docker Compose files provided. Let me know if you have any further questions!
+
 ## Project Structure
 
 A basic structure has been set up. The idea generally follows that each folder in `src/` should have a `index` file to export all the contents of the folder from. This makes importing multiple things in one file a lot cleaner.
@@ -153,6 +247,9 @@ Typescript path aliasing has also been set up in the [tsconfig file](./tsconfig.
 .
 ├── public
 │   └── vite.svg
+├── docs
+│   ├── changelog.example.md
+│   └── README.example.md
 ├─── src
 │   ├── assets
 │   │   └── react.svg
@@ -186,6 +283,10 @@ Typescript path aliasing has also been set up in the [tsconfig file](./tsconfig.
 This is the `public` folder supplied by Vite. See the docs [here](https://vitejs.dev/guide/assets) for its benefits.
 
 Generally it's used for storing static assets which you want accessible via URL. For example, you can access the file `public/vite.svg` at `http://localhost:5173/vite.svg`
+
+### The `docs` Folder
+
+This is a folder for documentation around the project to go into. Included here are example `README.md` and `changelog.md` files.
 
 ### The `assets` folder
 
@@ -349,4 +450,3 @@ Capacitor is a cross-platform app runtime that makes it easy to build web apps t
 #### Ionic
 
 Ionic is a popular open-source framework for building cross-platform mobile and web applications using web technologies like HTML, CSS, and JavaScript/TypeScript. It provides a comprehensive set of UI components, gestures, and tools that enable developers to create high-quality and interactive mobile apps. Ionic offers a rich ecosystem of plugins and integrations with other frameworks like Angular, React, and Vue.js, allowing developers to leverage their existing skills and libraries. With Ionic, developers can build apps that run natively on iOS, Android, and the web with a single codebase, streamlining the development process and reducing time to market. To learn more about Ionic and how to get started building mobile apps with it, check out the official documentation [here](https://ionicframework.com/docs).
-
