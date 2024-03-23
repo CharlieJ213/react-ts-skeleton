@@ -3,7 +3,7 @@ import { BASE_SITE_TITLE } from '@app/util/config';
 
 export interface SiteSettingsContextValue {
   /**
-   * The `title` of the site (shown in the browser tab)
+   * The i18n translation key `title` of the site (shown in the browser tab)
    */
   siteTitle: string;
   /**

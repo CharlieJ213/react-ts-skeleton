@@ -6,7 +6,7 @@ import s from './NotFound.module.scss';
  * @returns {JSX.Element}
  */
 const NotFound = (): JSX.Element => {
-  useSiteTitle('Page Not Found', true);
+  useSiteTitle('pageNotFound', true);
   return (
     <div className={s.wrapper}>
       <p>Page not found!</p>

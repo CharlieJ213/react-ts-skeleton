@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import s from './Footer.module.scss';
 
 /**
@@ -5,9 +6,10 @@ import s from './Footer.module.scss';
  * @returns {JSX.Element}
  */
 const Footer = (): JSX.Element => {
+  const { t } = useTranslation();
   return (
     <footer className={s.wrapper}>
-      <p>This is the footer!</p>
+      <p>{t('footer')}</p>
     </footer>
   );
 };

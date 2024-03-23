@@ -4,7 +4,7 @@ import { BASE_SITE_TITLE } from '@app/util/config';
 
 /**
  * Custom hook to set the title of the site
- * @param title The title you want to set
+ * @param title The i18n translation key for the title you want to set
  * @param overrideBase If true it will set the site title to be the exact string provided
  */
 export const useSiteTitle = (title: string, overrideBase = false): void => {

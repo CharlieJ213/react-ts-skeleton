@@ -38,6 +38,9 @@ This is a skeleton project for quickly setting up a React application with TypeS
   - [The `theme` folder](#the-theme-folder)
   - [The `types` folder](#the-types-folder)
   - [The `util` folder](#the-util-folder)
+- [Internationalization](#internationalization)
+  - [Benefits](#benefits)
+  - [Updating Translations](#updating-translations)
 - [Styling](#styling)
   - [Borders](#borders)
   - [Breakpoints](#breakpoints)
@@ -46,6 +49,19 @@ This is a skeleton project for quickly setting up a React application with TypeS
   - [Fonts](#fonts)
   - [Mixins](#mixins)
   - [Z Index](#z-index)
+- [Deployment](#deployment)
+  - [Deployment Options](#deployment-options)
+    - [1. Manual Deployment](#1-manual-deployment)
+      - [Steps](#steps)
+    - [2. Platform as a Service (PaaS)](#2-platform-as-a-service-paas)
+      - [Example: Netlify](#example-netlify)
+      - [Example: Vercel](#example-vercel)
+      - [Example: Render](#example-render)
+    - [3. Containerization and Orchestration](#3-containerization-and-orchestration)
+      - [Example: Kubernetes](#example-kubernetes)
+  - [Continuous Deployment](#continuous-deployment)
+    - [Example: GitHub Actions](#example-github-actions)
+  - [Monitoring and Maintenance](#monitoring-and-maintenance)
 - [Extras you can add](#extras-you-can-add)
   - [State Management](#state-management)
     - [Redux](#redux)
@@ -137,28 +153,28 @@ The `.env` file is used to define environment variables for your Vite-powered Re
 
 2. **Defining environment variables**: Each line in the `.env` file should contain a single environment variable in the `KEY=VALUE` format. For example:
 
-    ```dotenv
-    # Environment variables for the Vite-powered React application
+   ```dotenv
+   # Environment variables for the Vite-powered React application
 
-    # API URL
-    VITE_API_URL=https://api.example.com
+   # API URL
+   VITE_API_URL=https://api.example.com
 
-    # Environment-specific configuration
-    MODE=production
-    ```
+   # Environment-specific configuration
+   MODE=production
+   ```
 
-    - `VITE_API_URL`: This variable specifies the URL of the API that your Vite-powered React application will communicate with. Replace `https://api.example.com` with the actual API URL.
+   - `VITE_API_URL`: This variable specifies the URL of the API that your Vite-powered React application will communicate with. Replace `https://api.example.com` with the actual API URL.
 
-    - `MODE`: This variable specifies the environment in which the React application is running. Setting it to `production` indicates that the application is running in a production environment.
+   - `MODE`: This variable specifies the environment in which the React application is running. Setting it to `production` indicates that the application is running in a production environment.
 
 3. **Accessing environment variables**: In your Vite-powered React application code, you can access these environment variables using `import.meta.env`. For example:
 
-    ```javascript
-    const apiUrl = import.meta.env.VITE_API_URL;
-    const nodeEnv = import.meta.env.NODE_ENV;
-    ```
+   ```javascript
+   const apiUrl = import.meta.env.VITE_API_URL;
+   const nodeEnv = import.meta.env.NODE_ENV;
+   ```
 
-    These variables can then be used to configure your application behavior, such as making API requests or enabling/disabling certain features based on the environment.
+   These variables can then be used to configure your application behavior, such as making API requests or enabling/disabling certain features based on the environment.
 
 ### Important Notes
 
@@ -326,6 +342,42 @@ This is where custom TypeScript types are stored. You can structure this folder 
 
 This is a folder where you can store random helper functions that are used in multiple places throughout the app / config for the application. Anything you want really that's not particularly related to React and is more around config or just base TypeScript code.
 
+## Internationalization
+
+React i18n is a powerful internationalization framework for React applications. It allows developers to easily add multilingual support to their projects, making it possible to create applications that can be used by people from different language backgrounds.
+
+### Benefits
+
+1. **Multilingual Support**: With React i18n, developers can provide translations for different languages, allowing users to interact with the application in their preferred language.
+
+2. **User Experience**: By providing content in the user's preferred language, React i18n enhances the user experience, making the application more accessible and user-friendly.
+
+3. **Scalability**: React i18n scales with the application, making it easy to add new languages and update translations as the project evolves.
+
+4. **Community Support**: React i18n has a large and active community, providing resources, tutorials, and support to help developers implement internationalization in their projects.
+
+### Updating Translations
+
+To update translations in the application, follow these steps:
+
+1. **Locate the Translation File**: The master translation file is located at `src/assets/translations/translations.csv`.
+
+2. **Edit the Translations**: Open the `translations.csv` file using a text editor or spreadsheet software. This file contains translation keys and their corresponding translations for different languages.
+
+3. **Update Translations**: Locate the translation key and update the corresponding translation for each language as needed.
+
+4. **Save the Changes**: Once the translations are updated, save the changes to the `translations.csv` file.
+
+5. **Generate JSON Files**: After updating the `translations.csv` file, run the following command in your terminal to generate individual locale JSON files:
+
+   ```bash
+   npm run create-json-translations
+   ```
+
+   This command will generate JSON files for each locale based on the data in the `translations.csv` file.
+
+6. **Refresh the Application**: After generating the JSON files, refresh the application or rebuild it to see the changes reflected in the user interface.
+
 ## Styling
 
 Certain styling variables and helpers have been set up. The general approach to styling in this repo is making everything as customizable as possible. We want to use CSS variables to dictate the styles of our UI components to make it a lot simpler to write custom themes for.
@@ -398,6 +450,62 @@ Here there are some generic functions which could be of use when writing any SCS
 ### Z Index
 
 The file `src/theme/_z-index.scss` exports some initial `z-index` values. These can be helpful when trying to build up layers in the UI. Currently, there are exported variables for the already set up `Modal` component.
+
+## Deployment
+
+Deploying a React application involves building the application and serving the built assets using a web server. This guide outlines the steps to deploy a React application to various platforms.
+
+### Deployment Options
+
+#### 1. Manual Deployment
+
+##### Steps
+
+1. **Build the React Application**: In your terminal, navigate to the root directory of your React application and run the following command to build the application:
+
+   ```bash
+   npm run build
+   ```
+
+2. **Serve the Built Assets**: After the build process completes, the built assets will be available in the `build` directory. You can serve these assets using any web server of your choice (e.g., Nginx, Apache).
+
+#### 2. Platform as a Service (PaaS)
+
+Deploying to a Platform as a Service (PaaS) provider simplifies the deployment process by managing infrastructure for you.
+
+##### Example: Netlify
+
+1. **Build and Deploy with Netlify**: Sign up for a [Netlify](https://www.netlify.com/) account, and connect your Git repository. Netlify automatically detects changes in your repository and builds and deploys your React application.
+
+##### Example: Vercel
+
+1. **Deploy with Vercel**: Vercel provides a platform for static and serverless deployments. Sign up for a [Vercel](https://vercel.com/) account, connect your Git repository, and follow the deployment steps in the Vercel dashboard.
+
+##### Example: Render
+
+1. **Deploy with Render**: Render offers a modern cloud platform for deploying and scaling web applications and services. Sign up for a [Render](https://render.com/) account, connect your Git repository, and use Render's simple configuration to deploy your React application.
+
+#### 3. Containerization and Orchestration
+
+Containerizing your React application with Docker and deploying it with container orchestration tools like Kubernetes or Docker Swarm provides scalability and flexibility.
+
+##### Example: Kubernetes
+
+1. **Containerize the Application**: Write a Dockerfile to containerize your React application. Build the Docker image and push it to a container registry.
+
+2. **Deploy to Kubernetes**: Create Kubernetes manifests (Deployment, Service) to deploy your application. Apply the manifests to your Kubernetes cluster.
+
+### Continuous Deployment
+
+Automating the deployment process with continuous deployment (CI/CD) pipelines ensures that changes are deployed quickly and reliably.
+
+#### Example: GitHub Actions
+
+1. **Configure CI/CD Pipeline**: Set up a CI/CD pipeline using GitHub Actions or any other CI/CD service. Define workflows to build and deploy your React application automatically when changes are pushed to the repository.
+
+### Monitoring and Maintenance
+
+After deploying your React application, monitor its performance and address any issues that arise. Regularly update dependencies and configurations to ensure security and stability.
 
 ## Extras you can add
 

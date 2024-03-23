@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import s from './Header.module.scss';
 
 /**
@@ -5,9 +6,11 @@ import s from './Header.module.scss';
  * @returns {JSX.Element}
  */
 const Header = (): JSX.Element => {
+  const { t } = useTranslation();
+
   return (
     <header className={s.wrapper}>
-      <p>This is where your header goes!</p>
+      <p>{t('header')}</p>
     </header>
   );
 };

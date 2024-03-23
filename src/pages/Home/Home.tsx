@@ -6,7 +6,7 @@ import s from './Home.module.scss';
  * @returns {JSX.Element}
  */
 const Home = (): JSX.Element => {
-  useSiteTitle('Home');
+  useSiteTitle('home');
 
   return (
     <div className={s.wrapper}>

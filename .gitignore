@@ -25,3 +25,6 @@ dist-ssr
 
 # ESLint
 .eslintcache
+
+# Generated translation JSON files (optional)
+# src/assets/translations/*.json
