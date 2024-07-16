@@ -7,6 +7,7 @@ import { SiteSettingsProvider } from '@app/context';
 import { I18nextProvider } from 'react-i18next';
 import i18n from '@app/util/i18n';
 import { HelmetProvider } from 'react-helmet-async';
+import "react-activity/dist/library.css";
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
